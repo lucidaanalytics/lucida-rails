@@ -1,0 +1,24 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ruby/setup-ruby@de492cf36cbab201753d720ce4f4e336cd688c94 # v1.336.0
+        with:
+          ruby-version: "3.3"
+      # The published lucida gem; before its first release the public source is used instead.
+      - name: Base SDK
+        run: |
+          if ! gem install lucida; then
+            git clone --depth 1 https://github.com/lucidaanalytics/lucida-ruby "$RUNNER_TEMP/lucida-ruby"
+            echo "RUBYLIB=$RUNNER_TEMP/lucida-ruby/lib" >> "$GITHUB_ENV"
+          fi
+      - run: gem install railties
+      - run: ruby -Ilib test/rails_test.rb
