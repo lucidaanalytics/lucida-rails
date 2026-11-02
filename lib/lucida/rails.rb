@@ -9,7 +9,7 @@ module Lucida
   # Rails integration: Railtie, Rack middleware (request context) and delegation to the process-wide client.
   module Rails
     DELEGATED = %i[capture identify alias group_identify flush get_feature_flag is_feature_enabled
-                   get_feature_flag_payload get_all_flags get_feature_flag_result].freeze
+                   get_feature_flag_payload get_all_flags get_feature_flag_result get_feature_flag_details].freeze
 
     class << self
       def config = (@config ||= Configuration.new)
