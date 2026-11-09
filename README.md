@@ -3,9 +3,14 @@
 Rails integration for the [`lucida`](../ruby) server gem: a Railtie, a Rack middleware that sets the request context,
 and an install generator.
 
+## Install
+
+From GitHub, [lucidaanalytics/lucida-rails](https://github.com/lucidaanalytics/lucida-rails), release `v0.1.0` (neither gem is on RubyGems yet; the registry install is coming):
+
 ```ruby
 # Gemfile
-gem "lucida-rails"
+gem "lucida", git: "https://github.com/lucidaanalytics/lucida-ruby.git", tag: "v0.1.0"
+gem "lucida-rails", git: "https://github.com/lucidaanalytics/lucida-rails.git", tag: "v0.1.0"
 ```
 
 ```sh

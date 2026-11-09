@@ -2,7 +2,7 @@
 
 Lucida::Rails.configure do |c|
   c.api_key = ENV["LUCIDA_API_KEY"]
-  c.host = ENV.fetch("LUCIDA_HOST", "https://app.lucida.dev")
+  c.host = ENV.fetch("LUCIDA_HOST", "https://capture.lucidace.com")
   c.secret_key = ENV["LUCIDA_SECRET_KEY"] # enables local flag evaluation (polled in the background)
 
   # Adopt X-Lucida-Distinct-Id / X-Lucida-Session-Id sent by the browser SDK (client-controlled: never use for auth).
